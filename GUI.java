@@ -4,8 +4,8 @@ public class GUI {
     public static int plexRename = 0;
     public static String ignoreOutput = "-i";
     public static String extractAudioOutput = "-x";
-    public static String formatOutput = "best";
-    public static String sponsorBlockOutput = "--sponsorblock-remove CATS";
+    public static String formatOutput = "--audio-format best";
+    public static String sponsorBlockOutput = "--sponsorblock-remove all";
     public static String metadataOutput = "--add-metadata";
     public static String archiveOutput = "--download-archive archivedlinks.txt";
     public static void introduction() {
@@ -22,7 +22,7 @@ public class GUI {
         int extractAudio = JOptionPane.showConfirmDialog(null, "Would you like to extract audio (requires ffmpeg)?", "Options", JOptionPane.YES_NO_OPTION);
         if (extractAudio == 0) {
             String[] audioFormats = {"best", "aac", "flac", "mp3", "m4a", "opus", "vorbis", "wav", "alc"};
-            formatOutput = (String) JOptionPane.showInputDialog(null, "What format?", "Format Options", JOptionPane.QUESTION_MESSAGE, null, audioFormats, audioFormats[0]);
+            formatOutput = "--audio-format " + ((String) JOptionPane.showInputDialog(null, "What format?", "Format Options", JOptionPane.QUESTION_MESSAGE, null, audioFormats, audioFormats[0]));
         }
         int sponsorBlock = JOptionPane.showConfirmDialog(null, "Would you like to remove sponsor messages?", "Options", JOptionPane.YES_NO_OPTION);
         int metadata = JOptionPane.showConfirmDialog(null, "Would you like to embed metadata?", "Options", JOptionPane.YES_NO_OPTION);
@@ -42,7 +42,7 @@ public class GUI {
             formatOutput = "";
         }
         if (sponsorBlock == 0){
-            sponsorBlockOutput = "--sponsorblock-remove CATS";
+            sponsorBlockOutput = "--sponsorblock-remove all";
         }
         else{
             sponsorBlockOutput = "";
