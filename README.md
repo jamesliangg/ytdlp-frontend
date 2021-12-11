@@ -1,5 +1,8 @@
 # ytdlp-frontend
 ## Introduction
+Have you ever had a video or song on YouTube suddenly disapear from your playlist? It's hard to find out what the content was and you might never remember.
+With YT-DLP, you can download both videos and audio to save what you love.
+
 This project is meant to make the downloading of videos with YT-DLP easier and simpler.
 The user provides the URL and is asked for several common options they can select including extracting audio.
 
