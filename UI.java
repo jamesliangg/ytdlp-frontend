@@ -3,10 +3,19 @@ import java.awt.event.*;
 import java.awt.Font;
 import java.awt.BorderLayout;
 
+/*
+https://www.javatpoint.com/java-jbutton
+https://www.javatpoint.com/java-jlabel
+https://www.javatpoint.com/java-jtextfield
+https://www.javatpoint.com/java-jcheckbox
+https://www.javatpoint.com/java-jradiobutton
+*/
+
 public class UI extends JFrame implements ActionListener{
     JLabel l1;
     JTextField tf1;
     JCheckBox cb1;
+    JRadioButton r1,r2;
     UI(){
         JFrame f = new JFrame("Download Options");
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -26,16 +35,33 @@ public class UI extends JFrame implements ActionListener{
         b1.addActionListener(this);
         f.add(b1);
         cb1 = new JCheckBox("Ignore Errors", true);
-        cb1.setBounds(25,60,200,50);
+        cb1.setBounds(25,60,125,50);
         f.add(cb1);
+        r1 = new JRadioButton("Extract Video", true);
+        r2 = new JRadioButton("Extract Audio");
+        r1.setBounds(25,100,125,30);
+        r2.setBounds(25,120,125,30);
+        ButtonGroup bg = new ButtonGroup();
+        bg.add(r1);bg.add(r2);
+        f.add(r1);f.add(r2);
     }
     public void actionPerformed(ActionEvent e){
         boolean ignoreErrors = true;
+        boolean extractVideo = false;
+        boolean extractAudio = false;
         String s1 = tf1.getText();
-        System.out.println(s1);
         if(cb1.isSelected()){
             ignoreErrors = true;
         }
+        if(r1.isSelected()){
+            extractVideo = true;
+        }
+        if(r2.isSelected()){
+            extractAudio = true;
+        }
+        System.out.println(s1);
         System.out.println(ignoreErrors);
+        System.out.println(extractVideo);
+        System.out.println(extractAudio);
     }
 }
