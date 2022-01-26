@@ -81,7 +81,7 @@ public class UI extends JFrame implements ActionListener{
         boolean extractAudio = false;
         String audioFormat = "";
         String videoFormat = "";
-        String s1 = tf1.getText();
+        String url = tf1.getText();
         if(cb1.isSelected()){
             ignoreErrors = true;
         }
@@ -103,10 +103,16 @@ public class UI extends JFrame implements ActionListener{
         if(list1.getSelectedIndex() != -1){
             audioFormat = list1.getSelectedValue();
         }
-        if(list2.getSelectedIndex() != -1){
-            videoFormat = list1.getSelectedValue();
+        else{
+            audioFormat = "mp3";
         }
-        System.out.println("url" + s1);
+        if(list2.getSelectedIndex() != -1){
+            videoFormat = list2.getSelectedValue();
+        }
+        else{
+            videoFormat = "mp4";
+        }
+        System.out.println("url" + url);
         System.out.println("ignoreErrors" + ignoreErrors);
         System.out.println("metadata" + metadata);
         System.out.println("sponsors" + sponsors);
@@ -115,5 +121,6 @@ public class UI extends JFrame implements ActionListener{
         System.out.println("extractAudio" + extractAudio);
         System.out.println("audioFormat" + audioFormat);
         System.out.println("videoFormat" + videoFormat);
+        System.out.println(Generator.getString(url, ignoreErrors, metadata, sponsors, archiveLinks, extractVideo, extractAudio, audioFormat, videoFormat));
     }
 }
