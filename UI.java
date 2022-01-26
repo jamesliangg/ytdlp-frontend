@@ -112,15 +112,15 @@ public class UI extends JFrame implements ActionListener{
         else{
             videoFormat = "mp4";
         }
-        System.out.println("url" + url);
-        System.out.println("ignoreErrors" + ignoreErrors);
-        System.out.println("metadata" + metadata);
-        System.out.println("sponsors" + sponsors);
-        System.out.println("archiveLinks" + archiveLinks);
-        System.out.println("extractVideo" + extractVideo);
-        System.out.println("extractAudio" + extractAudio);
-        System.out.println("audioFormat" + audioFormat);
-        System.out.println("videoFormat" + videoFormat);
+        // System.out.println("url" + url);
+        // System.out.println("ignoreErrors" + ignoreErrors);
+        // System.out.println("metadata" + metadata);
+        // System.out.println("sponsors" + sponsors);
+        // System.out.println("archiveLinks" + archiveLinks);
+        // System.out.println("extractVideo" + extractVideo);
+        // System.out.println("extractAudio" + extractAudio);
+        // System.out.println("audioFormat" + audioFormat);
+        // System.out.println("videoFormat" + videoFormat);
         System.out.println(Generator.getString(url, ignoreErrors, metadata, sponsors, archiveLinks, extractVideo, extractAudio, audioFormat, videoFormat));
     }
 }

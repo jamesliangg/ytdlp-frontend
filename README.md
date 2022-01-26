@@ -1,5 +1,6 @@
 # ytdlp-frontend
 ## Introduction
+![Application GUI](https://res.cloudinary.com/dtwco1l6i/image/upload/v1643157879/Github/ytdlp_koz8gj.png)
 Have you ever had a video or song on YouTube suddenly disapear from your playlist? It's hard to find out what the content was and you might never remember.
 With YT-DLP, you can download both videos and audio to save what you love.
 
@@ -18,3 +19,6 @@ brew install yt-dlp
 
 brew install ffmpeg
 ```
+
+## Warnings
+The extraction of video will attempt to download in the selected format, if not possible, it'll download the best video.
