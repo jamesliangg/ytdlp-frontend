@@ -122,5 +122,6 @@ public class UI extends JFrame implements ActionListener{
         // System.out.println("audioFormat" + audioFormat);
         // System.out.println("videoFormat" + videoFormat);
         System.out.println(Generator.getString(url, ignoreErrors, metadata, sponsors, archiveLinks, extractVideo, extractAudio, audioFormat, videoFormat));
+        JOptionPane.showMessageDialog(this,"Copied to clipboard.");
     }
 }

@@ -1,3 +1,11 @@
+import java.awt.datatransfer.StringSelection;
+import java.awt.Toolkit;
+import java.awt.datatransfer.Clipboard;
+
+/*
+https://stackoverflow.com/questions/6710350/copying-text-to-the-clipboard-using-java
+*/
+
 public class Generator {
     public static String getString(String url, boolean ignoreErrors, boolean metadata, boolean sponsors, boolean archiveLinks, boolean extractVideo, boolean extractAudio, String audioFormat, String videoFormat){
         String output = "yt-dlp \"" + url + "\"";
@@ -44,6 +52,9 @@ public class Generator {
                     output += " -f \"bv*[ext=webm]+ba[ext=m4a]/b[ext=webm] / bv*+ba/b\"";
             }
         }
+        StringSelection stringSelection = new StringSelection(output);
+        Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+        clipboard.setContents(stringSelection, null);
         return output;
     }
 }
