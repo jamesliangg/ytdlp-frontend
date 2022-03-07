@@ -15,7 +15,7 @@ https://www.javatpoint.com/java-jlist
 public class UI extends JFrame implements ActionListener{
     JLabel l1;
     JTextField tf1;
-    JCheckBox cb1,cb2,cb3,cb4;
+    JCheckBox cb1,cb2,cb3,cb4,cb5;
     JRadioButton r1,r2;
     JList<String> list1, list2;
     UI(){
@@ -61,9 +61,12 @@ public class UI extends JFrame implements ActionListener{
         cb3 = new JCheckBox("Add Metadata", true);
         cb3.setBounds(25,80,150,30);
         f.add(cb3);
-        cb4 = new JCheckBox("Archive Links");
+        cb4 = new JCheckBox("Embed Thumbnail");
         cb4.setBounds(25,120,150,30);
         f.add(cb4);
+        cb5 = new JCheckBox("Archive Links");
+        cb5.setBounds(25,140,150,30);
+        f.add(cb5);
         DefaultListModel<String> ls2 = new DefaultListModel<>();
         ls2.addElement("mp4");
         ls2.addElement("mkv");
@@ -75,6 +78,7 @@ public class UI extends JFrame implements ActionListener{
     public void actionPerformed(ActionEvent e){
         boolean ignoreErrors = false;
         boolean metadata = false;
+        boolean thumbnail = false;
         boolean sponsors = false;
         boolean archiveLinks = false;
         boolean extractVideo = false;
@@ -92,6 +96,9 @@ public class UI extends JFrame implements ActionListener{
             sponsors = true;
         }
         if(cb4.isSelected()){
+            thumbnail = true;
+        }
+        if(cb5.isSelected()){
             archiveLinks = true;
         }
         if(r1.isSelected()){
@@ -121,7 +128,7 @@ public class UI extends JFrame implements ActionListener{
         // System.out.println("extractAudio" + extractAudio);
         // System.out.println("audioFormat" + audioFormat);
         // System.out.println("videoFormat" + videoFormat);
-        System.out.println(Generator.getString(url, ignoreErrors, metadata, sponsors, archiveLinks, extractVideo, extractAudio, audioFormat, videoFormat));
+        System.out.println(Generator.getString(url, ignoreErrors, metadata, thumbnail, sponsors, archiveLinks, extractVideo, extractAudio, audioFormat, videoFormat));
         JOptionPane.showMessageDialog(this,"Copied to clipboard.");
     }
 }
