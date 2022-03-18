@@ -22,7 +22,7 @@ public class UI extends JFrame implements ActionListener{
         JFrame f = new JFrame("Download Options");
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         f.setLayout(new BorderLayout());
-        f.setSize(400,300);
+        f.setSize(400,400);
         f.setLayout(null);
         f.setVisible(true);
         l1 = new JLabel("Enter URL of Video or Playlist");
