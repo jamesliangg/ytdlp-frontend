@@ -15,14 +15,14 @@ https://www.javatpoint.com/java-jlist
 public class UI extends JFrame implements ActionListener{
     JLabel l1;
     JTextField tf1;
-    JCheckBox cb1,cb2,cb3,cb4;
+    JCheckBox cb1,cb2,cb3,cb4,cb5;
     JRadioButton r1,r2;
     JList<String> list1, list2;
     UI(){
         JFrame f = new JFrame("Download Options");
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         f.setLayout(new BorderLayout());
-        f.setSize(400,300);
+        f.setSize(400,400);
         f.setLayout(null);
         f.setVisible(true);
         l1 = new JLabel("Enter URL of Video or Playlist");
@@ -33,7 +33,7 @@ public class UI extends JFrame implements ActionListener{
         tf1.setBounds(25,30,350,30);
         f.add(tf1);
         JButton b1 = new JButton("Get download String");
-        b1.setBounds(25,225,175,30);
+        b1.setBounds(25,270,175,30);
         b1.addActionListener(this);
         f.add(b1);
         cb1 = new JCheckBox("Ignore Errors", true);
@@ -41,8 +41,8 @@ public class UI extends JFrame implements ActionListener{
         f.add(cb1);
         r1 = new JRadioButton("Extract Video", true);
         r2 = new JRadioButton("Extract Audio");
-        r1.setBounds(25,140,125,30);
-        r2.setBounds(25,160,125,30);
+        r1.setBounds(25,210,125,30);
+        r2.setBounds(25,240,125,30);
         ButtonGroup bg = new ButtonGroup();
         bg.add(r1);bg.add(r2);
         f.add(r1);f.add(r2);
@@ -56,14 +56,17 @@ public class UI extends JFrame implements ActionListener{
         list1.setBounds(200,70,40,85);
         f.add(list1);
         cb2 = new JCheckBox("Remove Sponsors");
-        cb2.setBounds(25,100,150,30);
+        cb2.setBounds(25,90,150,30);
         f.add(cb2);
         cb3 = new JCheckBox("Add Metadata", true);
-        cb3.setBounds(25,80,150,30);
+        cb3.setBounds(25,120,150,30);
         f.add(cb3);
-        cb4 = new JCheckBox("Archive Links");
-        cb4.setBounds(25,120,150,30);
+        cb4 = new JCheckBox("Embed Thumbnail");
+        cb4.setBounds(25,150,150,30);
         f.add(cb4);
+        cb5 = new JCheckBox("Archive Links");
+        cb5.setBounds(25,180,150,30);
+        f.add(cb5);
         DefaultListModel<String> ls2 = new DefaultListModel<>();
         ls2.addElement("mp4");
         ls2.addElement("mkv");
@@ -75,6 +78,7 @@ public class UI extends JFrame implements ActionListener{
     public void actionPerformed(ActionEvent e){
         boolean ignoreErrors = false;
         boolean metadata = false;
+        boolean thumbnail = false;
         boolean sponsors = false;
         boolean archiveLinks = false;
         boolean extractVideo = false;
@@ -92,6 +96,9 @@ public class UI extends JFrame implements ActionListener{
             sponsors = true;
         }
         if(cb4.isSelected()){
+            thumbnail = true;
+        }
+        if(cb5.isSelected()){
             archiveLinks = true;
         }
         if(r1.isSelected()){
@@ -121,7 +128,7 @@ public class UI extends JFrame implements ActionListener{
         // System.out.println("extractAudio" + extractAudio);
         // System.out.println("audioFormat" + audioFormat);
         // System.out.println("videoFormat" + videoFormat);
-        System.out.println(Generator.getString(url, ignoreErrors, metadata, sponsors, archiveLinks, extractVideo, extractAudio, audioFormat, videoFormat));
+        System.out.println(Generator.getString(url, ignoreErrors, metadata, thumbnail, sponsors, archiveLinks, extractVideo, extractAudio, audioFormat, videoFormat));
         JOptionPane.showMessageDialog(this,"Copied to clipboard.");
     }
 }

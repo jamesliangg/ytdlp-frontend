@@ -7,13 +7,16 @@ https://stackoverflow.com/questions/6710350/copying-text-to-the-clipboard-using-
 */
 
 public class Generator {
-    public static String getString(String url, boolean ignoreErrors, boolean metadata, boolean sponsors, boolean archiveLinks, boolean extractVideo, boolean extractAudio, String audioFormat, String videoFormat){
+    public static String getString(String url, boolean ignoreErrors, boolean metadata, boolean thumbnail,boolean sponsors, boolean archiveLinks, boolean extractVideo, boolean extractAudio, String audioFormat, String videoFormat){
         String output = "yt-dlp \"" + url + "\"";
         if(ignoreErrors == true){
             output += " -i";
         }
         if(metadata == true){
             output += " --add-metadata";
+        }
+        if(thumbnail == true){
+            output += " --embed-thumbnail";
         }
         if(sponsors == true){
             output += " --sponsorblock-remove all";
